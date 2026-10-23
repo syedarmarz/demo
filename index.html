@@ -2,193 +2,304 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Coming soon</title>
-<meta name="description" content="We’re putting the finishing touches on something new. Leave your email and we’ll tell you the day it opens.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Free Image Background Remover | PixelEraser</title>
+<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+<link rel="shortcut icon" href="/favicon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="PixelEraser" />
+<link rel="manifest" href="/favicon/site.webmanifest" />
+<meta name="description" content="Remove image background instantly with PixelEraser. Free online AI background remover: no sign-up, private in your browser, transparent PNG download.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Syed Armarz">
+<meta name="application-name" content="PixelEraser">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PixelEraser">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Free Image Background Remover | PixelEraser">
+<meta property="og:description" content="Remove image background instantly with PixelEraser">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Free Image Background Remover | PixelEraser">
+<meta name="twitter:description" content="Remove image background instantly with PixelEraser">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "PixelEraser", "alternateName": "PixelEraser Free Image Background Remover", "description": "Remove image background instantly with PixelEraser", "applicationCategory": "MultimediaApplication", "operatingSystem": "Any", "browserRequirements": "Requires JavaScript", "inLanguage": "en", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "creator": {"@type": "Person", "name": "Syed Armarz", "url": "https://www.syedarmarz.bond/"}, "featureList": ["AI background removal in the browser", "Transparent, colour or photo backgrounds", "Download as a transparent PNG"]}</script>
 <style>
-  :root {
-    --bg: #ffffff;
-    --ink: #14161a;
-    --muted: #666c76;
-    --line: #e7e9ed;
-    --accent: #2b50e6;
-    --accent-ink: #ffffff;
-    --head: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
-    --body: "DM Sans", "Helvetica Neue", Arial, sans-serif;
-  }
-  * { box-sizing: border-box; margin: 0; }
-  html, body { height: 100%; }
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--body);
-    font-size: 1.0625rem;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
-  .page {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: clamp(1.25rem, 4vw, 2.5rem);
-    max-width: 68rem;
-    margin: 0 auto;
-  }
-  header { display: flex; align-items: center; gap: .6rem; font-family: var(--head); font-weight: 600; font-size: 1.15rem; }
-  .mark { width: 1.1rem; height: 1.1rem; border-radius: 50%; background: var(--accent); }
-
-  main { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 4rem 0; }
-  h1 {
-    font-family: var(--head);
-    font-weight: 700;
-    font-size: clamp(2.6rem, 8vw, 5.5rem);
-    line-height: 1.02;
-    letter-spacing: -0.035em;
-    max-width: 14ch;
-  }
-  .lead { color: var(--muted); max-width: 34rem; margin-top: 1.5rem; }
-
-  .count {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    max-width: 38rem;
-    margin-top: 3.5rem;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-  }
-  .unit { padding: 1.25rem 0 1.1rem 1.25rem; border-left: 1px solid var(--line); }
-  .unit:first-child { border-left: 0; padding-left: 0; }
-  .num {
-    display: block;
-    font-family: var(--head);
-    font-weight: 600;
-    font-size: clamp(2.2rem, 7vw, 3.75rem);
-    line-height: 1;
-    letter-spacing: -0.03em;
-    font-variant-numeric: tabular-nums;
-  }
-  .label { display: block; margin-top: .5rem; font-size: .9rem; color: var(--muted); }
-
-  .notify { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2.5rem; max-width: 34rem; }
-  .notify input {
-    flex: 1 1 14rem;
-    font: inherit;
-    padding: .85rem 1rem;
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    background: #fff;
-    color: var(--ink);
-  }
-  .notify input::placeholder { color: #9aa0aa; }
-  .notify button {
-    font: inherit;
-    font-weight: 500;
-    padding: .85rem 1.4rem;
-    border: 0;
-    border-radius: 10px;
-    background: var(--accent);
-    color: var(--accent-ink);
-    cursor: pointer;
-    transition: background .15s;
-  }
-  .notify button:hover { background: #2142c4; }
-  .notify button:disabled { opacity: .6; cursor: default; }
-  .status { flex-basis: 100%; min-height: 1.5rem; font-size: .95rem; color: var(--muted); }
-  .status.ok { color: #1a7f4b; }
-  .status.err { color: #b3261e; }
-
-  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
-  footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1.5rem; font-size: .9rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 1.25rem; }
-  footer a { color: inherit; text-decoration: none; }
-  footer a:hover { color: var(--ink); text-decoration: underline; }
-  .links { display: flex; gap: 1.25rem; }
-
-  .count { animation: rise .8s ease-out both; }
-  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-  @media (prefers-reduced-motion: reduce) { .count { animation: none; } }
-  @media (max-width: 480px) { .unit { padding-left: .9rem; } }
+:root{color-scheme:dark;--bg1:#0d0d0f;--bg2:#000;--glass:rgba(22,22,25,.72);--glass2:rgba(20,20,23,.92);--panel:#111113;--panel2:#1a1a1d;--text:#f5f5f5;--muted:#9c9ca4;--line:#2e2e34;--ink:#fff;--err:#ff9a9a;--ca:#1b1b1e;--cb:#121214;
+--h1:linear-gradient(180deg,#fff 30%,#80808a);--btn:linear-gradient(135deg,#fff,#b8b8be);--btnt:#000;
+--glow:radial-gradient(900px 520px at 50% -180px,rgba(255,255,255,.16),transparent 70%),radial-gradient(500px 300px at 90% 20%,rgba(255,255,255,.06),transparent 70%);
+--sh:0 24px 60px -32px rgba(255,255,255,.16);--mark:invert(1)}
+*{box-sizing:border-box}html{background:var(--bg2);scroll-behavior:smooth;scroll-padding-top:72px;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
+button,label,select,a,.menu li{touch-action:manipulation}
+body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+body{margin:0;min-height:100vh;min-height:100dvh;color:var(--text);font:16px/1.6 "Helvetica Neue",Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--glow),linear-gradient(180deg,var(--bg1),var(--bg2));background-repeat:no-repeat}
+body::before{content:"";position:absolute;top:0;left:0;right:0;height:640px;z-index:-1;pointer-events:none;opacity:.5;
+background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;
+-webkit-mask-image:radial-gradient(ellipse 70% 50% at 50% 0,#000,transparent 75%);mask-image:radial-gradient(ellipse 70% 50% at 50% 0,#000,transparent 75%)}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
+nav{position:sticky;top:0;z-index:10;padding-top:env(safe-area-inset-top);background:var(--glass2);border-bottom:1px solid var(--line)}
+@media(min-width:900px) and (hover:hover){nav{background:var(--glass);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:12px;color:var(--ink);text-decoration:none}
+.brand img{width:36px;height:36px;display:block;filter:var(--mark)}
+.brand span{font-size:1.4rem;font-weight:800;letter-spacing:-.03em;line-height:1}
+header.hero{text-align:center;padding:clamp(40px,8vw,88px) 0 clamp(28px,5vw,48px)}
+main{padding-bottom:clamp(36px,6vw,72px)}
+h1{font-size:clamp(2.2rem,7.2vw,4.4rem);font-weight:800;line-height:1.08;letter-spacing:-.04em;margin:0 auto 16px;padding-bottom:.08em;background:var(--h1);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);font-size:clamp(1rem,2.4vw,1.25rem);margin:0 auto;max-width:46ch}
+.card{background:var(--glass2);border:1px solid var(--line);border-radius:clamp(20px,3vw,32px);padding:clamp(14px,3vw,32px);box-shadow:var(--sh)}
+.dropwrap{position:relative}
+.drop{display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;border-radius:22px;padding:clamp(32px,6vw,56px) 20px;text-align:center;cursor:pointer;background:linear-gradient(160deg,var(--panel),var(--panel2));border:2px dashed var(--line);transition:border-color .15s,transform .15s}
+.drop svg{width:44px;height:44px;margin-bottom:6px;color:var(--ink)}
+.drop strong{font-size:clamp(1.05rem,2.6vw,1.3rem);font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+.drop span{color:var(--muted);font-size:.92rem}
+.drop .go{margin-top:12px;padding:11px 24px;border-radius:14px;background:var(--btn);color:var(--btnt);font-weight:700;font-size:.95rem}
+.drop input{position:absolute;opacity:0;width:1px;height:1px}
+.drop:focus-within,.drop.over{border-color:var(--ink);border-style:solid}
+.drop:has(input:focus-visible){outline:3px solid var(--ink);outline-offset:3px}
+.hint{display:none}
+@media(hover:hover){.drop:hover{border-color:var(--ink);border-style:solid}.hint{display:inline}}
+.controls{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;margin:22px 0 4px}
+.field{display:flex;flex-direction:column;gap:6px;font-size:.85rem;font-weight:600;color:var(--muted)}
+select,input[type=color]{font:inherit;font-size:1rem;color:var(--text);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-height:46px}
+input[type=color]{padding:3px;width:56px;min-height:46px}
+.bar{height:5px;background:var(--line);border-radius:3px;overflow:hidden;margin-top:18px}
+.bar i{display:block;height:100%;width:100%;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .2s}
+.status{min-height:1.6em;margin:12px 0 0;color:var(--muted);font-size:.92rem}.status.err{color:var(--err);font-weight:600}
+.checker{background-color:var(--ca);background-image:linear-gradient(45deg,var(--cb) 25%,transparent 25%,transparent 75%,var(--cb) 75%),linear-gradient(45deg,var(--cb) 25%,transparent 25%,transparent 75%,var(--cb) 75%);background-size:20px 20px;background-position:0 0,10px 10px}
+.actions{margin-top:22px;display:flex;flex-direction:column;gap:12px}
+@media(min-width:560px){.actions{flex-direction:row}}
+button{font:inherit;font-weight:700;border-radius:14px;padding:13px 28px;min-height:48px;cursor:pointer;border:1.5px solid var(--ink);background:transparent;color:var(--ink);transition:opacity .15s,transform .1s}
+button.primary{background:var(--btn);color:var(--btnt);border-color:transparent;box-shadow:var(--sh)}
+@media(hover:hover){button:hover:not(:disabled){opacity:.78}}
+button:active:not(:disabled){transform:translateY(1px)}button:disabled{opacity:.35;cursor:not-allowed;box-shadow:none}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+footer{content-visibility:auto;contain-intrinsic-size:auto 170px;border-top:1px solid var(--line);padding:28px 0 calc(28px + env(safe-area-inset-bottom));color:var(--muted);font-size:.88rem}
+footer .wrap{display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px}
+footer p{margin:0}footer .fbrand{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--ink);text-decoration:none;margin-bottom:4px;flex-wrap:wrap}
+footer .fbrand img{width:26px;height:26px;filter:var(--mark)}footer .fbrand strong{font-size:1.05rem;letter-spacing:-.01em}
+footer .heart{color:var(--ink)}footer p a{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}footer p a:hover{opacity:.7}footer .copy{font-size:.8rem;opacity:.85;margin-top:6px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.actions{flex-wrap:wrap}
+body{overflow-x:clip}
+@media(min-width:560px){.controls{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.controls>*{min-width:0}
+.field select{flex:none;width:100%}
+.drop strong .dd{display:none;color:inherit;font-size:inherit}
+@media(hover:hover){.drop strong .dd{display:inline}}
+@media(max-width:559px){
+.wrap{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+nav .wrap{height:56px}
+.brand span{font-size:1.25rem}
+header.hero{padding:28px 0 22px}
+h1{font-size:clamp(1.7rem,8vw,2.6rem);max-width:100%}
+.card{padding:12px;border-radius:22px}
+.drop{padding:34px 16px;border-radius:18px}
+.controls{gap:16px;margin-top:18px}
+footer{padding-top:22px}
+footer .fbrand strong{font-size:.95rem}
+}
+.drop.has{padding:12px}
+.drop.has svg,.drop.has strong,.drop.has>span:not(.go):not(.pvwrap){display:none}
+.drop.has .go{display:none}
+.pvwrap{display:none}
+.drop.has .pvwrap{display:block;position:relative;width:fit-content;max-width:100%;margin:0 auto;border-radius:14px;overflow:hidden;line-height:0;contain:paint;isolation:isolate}
+.pvwrap .pv{display:block;max-width:100%;max-height:min(320px,40vh);transition:opacity .3s}
+.pvwrap.busy .pv{opacity:.7}
+.pvwrap.busy::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.5) 50%,transparent 65%);transform:translateX(-100%);will-change:transform;animation:sweep 1.4s linear infinite}
+@keyframes sweep{to{transform:translateX(100%)}}
+@media(prefers-reduced-motion:reduce){.pvwrap.busy::after{animation:none;transform:none;opacity:.35}}
+.field{position:relative}
+#bgcolor{position:absolute;left:0;bottom:0;width:1px;height:1px;min-height:0;padding:0;border:0;opacity:0;pointer-events:none}
+.features{content-visibility:auto;contain-intrinsic-size:auto 220px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:clamp(28px,5vw,56px) 0 clamp(36px,6vw,72px)}
+.feat{padding:24px;border:1px solid var(--line);border-radius:22px;background:var(--glass)}
+.feat svg{width:28px;height:28px;margin-bottom:12px;color:var(--ink)}
+.feat h2{font-size:1.1rem;margin:0 0 6px;letter-spacing:-.01em}
+.feat p{margin:0;color:var(--muted);font-size:.95rem}
+@media(max-width:559px){.drop.has{padding:10px}.pvwrap .pv{max-height:min(220px,30vh)}}
+.dsel{position:relative}
+.field .sel{position:relative;width:100%;text-align:left;font:inherit;font-size:1rem;font-weight:600;color:var(--text);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 40px 10px 12px;min-height:46px;box-shadow:none}
+.field .sel::after{content:"";position:absolute;right:16px;top:50%;width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-70%) rotate(45deg)}
+.field .sel:hover{border-color:var(--ink);opacity:1}
+.menu{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:20;margin:0;padding:6px;list-style:none;background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--sh)}
+.menu li{padding:11px 12px;border-radius:10px;cursor:pointer;color:var(--text);font-size:1rem;font-weight:600}
+.menu li[aria-selected=true]{background:var(--panel2)}
+@media(hover:hover){.menu li:hover{background:var(--panel2)}}
 </style>
 </head>
 <body>
-<div class="page">
-  <header>
-    <span class="mark" aria-hidden="true"></span>
-    <span>Your Brand</span>
+<nav><div class="wrap"><a class="brand" href="./" aria-label="PixelEraser home"><img src="data:image/png;base64,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" alt="" width="36" height="36" decoding="async"><span>PixelEraser</span></a></div></nav>
+<main class="wrap">
+  <header class="hero">
+    <h1>Free image<br>background remover</h1>
+    <p class="sub">Remove image background instantly with PixelEraser</p>
   </header>
 
-  <main>
-    <h1>Something new is almost ready.</h1>
-    <p class="lead">We’re putting the finishing touches on it. Leave your email and we’ll tell you the day it opens.</p>
+  <section class="card" id="tool" aria-label="Background remover tool">
+    <noscript><p class="status err">PixelEraser needs JavaScript turned on to remove image backgrounds.</p></noscript>
+    <div class="dropwrap"><label class="drop" id="drop">
+      <input type="file" id="file" accept="image/png,image/jpeg,image/webp">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
+      <span class="pvwrap" id="pvwrap"><img class="pv" id="preview" alt="Original image" decoding="async" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></span>
+      <strong>Choose an image<span class="dd"> or drop it here</span></strong>
+      <span>PNG, JPG or WebP<span class="hint"> &middot; or paste with Ctrl+V</span></span>
+      <span class="go">Select image</span>
+    </label></div>
 
-    <div class="count" role="timer" aria-label="Time until launch">
-      <div class="unit"><span class="num" id="d">00</span><span class="label">days</span></div>
-      <div class="unit"><span class="num" id="h">00</span><span class="label">hours</span></div>
-      <div class="unit"><span class="num" id="m">00</span><span class="label">minutes</span></div>
-      <div class="unit"><span class="num" id="s">00</span><span class="label">seconds</span></div>
+    <div class="controls">
+      <label class="field">Quality
+        <select id="model">
+          <option value="isnet_quint8">Fast (smaller download)</option>
+          <option value="isnet_fp16" selected>Better edges</option>
+        </select>
+      </label>
+      <div class="field">
+        <label for="bgmode">Background</label>
+        <div class="dsel" id="bgSel">
+          <button type="button" class="sel" id="bgmode" aria-haspopup="listbox" aria-expanded="false">Transparent</button>
+          <ul class="menu" id="bgmenu" role="listbox" aria-label="Background" hidden>
+            <li role="option" tabindex="-1" data-v="transparent" aria-selected="true">Transparent</li>
+            <li role="option" tabindex="-1" data-v="photo" aria-selected="false">Photo</li>
+            <li role="option" tabindex="-1" data-v="color" aria-selected="false">Colour</li>
+          </ul>
+        </div>
+        <input type="color" id="bgcolor" value="#ffffff" tabindex="-1" aria-label="Background colour">
+        <input type="file" id="bgphoto" accept="image/png,image/jpeg,image/webp" hidden>
+      </div>
     </div>
 
-    <form class="notify" id="notify" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-      <input type="email" name="email" placeholder="you@example.com" aria-label="Email address" required autocomplete="email">
-      <button type="submit">Notify me</button>
-      <p class="status" id="status" role="status" aria-live="polite"></p>
-    </form>
-  </main>
+    <div class="bar" aria-hidden="true"><i id="progress"></i></div>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
 
-  <footer>
-    <span>© <span id="year"></span> Your Brand</span>
-    <span class="links">
-      <a href="mailto:hello@example.com">Contact</a>
-      <a href="#">Twitter</a>
-      <a href="#">Instagram</a>
-    </span>
-  </footer>
-</div>
+    <div class="actions">
+      <button class="primary" id="download" disabled>Download</button>
+    </div>
+  </section>
+  <section class="features" aria-label="Why PixelEraser">
+    <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><h2>Secure</h2><p>Your images are processed in your browser and never uploaded to a server.</p></div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12l-8 8-9-9V3h8z"/><circle cx="7.5" cy="7.5" r="1.2"/></svg><h2>Free, no sign-up</h2><p>Use it as often as you like. No account, no watermark.</p></div>
+    <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/></svg><h2>High quality PNG</h2><p>Get sharp PNG cut-outs with smooth, clean edges, ready for any design.</p></div>
+  </section>
+</main>
+<footer><div class="wrap">
+  <a class="fbrand" href="./" aria-label="PixelEraser home"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAPk0lEQVR42u2de4xdVRWHv3Punem0FGkLlGKKFlrBYinQFlqBKIICgqkiIIhFjSggatBEjKKoicYYAwkvoQYQFRUQQjA2PpDKw1LlIaFQamlA+qDl0ef03Zn78I+zVu+aNfvcuTNzzmWGmZ2czMydc/fZe/3We6+9TwREQJWuLZbPy/J3K3A4cAgwWj6LAvdH7vNGWuj5BPqp1rk/rY/etGqgn9Azq4F77P+2AKuAl4GKfF6Q/1VCc4zcVTQ3HAfcACwD9piHDV/1r+3AEuAa4BhDz2KA3kHiTwLuCnRcEakYvtKviqNZGbhTaBoCoRvxzwTeMATvTOl4+Eq/lFE7zWdvAucEQOhC/PPli1X35eGrf5el5cUOhL3EPxHoMOgNEy7bq2zoeoqCEIkHMwp4FpgsNxUY2q2/HlWaJ6i0XQlMB3bEwvFXCPFLQ5z4auuifl4V48LbVhAaTxKaVyJgLLAUOFiQj4co8Stm7uWAz96b1hLo0z4nEkfnfUXg48A7U24easR/CPi5xD3lPqqeSLTJN4FTA3RVrTMBOA/gbvmgNISNYxWYnwOwC6RvT9uS0PyPAP81vutQJf4KURux/Cz082oVACYDu4S2FRcnVIEXY+DAIWx0Vc//QXz1ouHOvl7K4bHkg5YYw+zb6HgI633bVmWU0LPJuYL0ubbezXEfspdvxzY5I+J76aoC76oXGwx17tf5nyt6u2RsQX+uEWJfZkg2tK6HuXmQGGH11Dp7uEq9TB6qIb41Y3APAp52z/BGeG0kAIwxCxIDKR1Qcfq0L5FtI6rWxgE3i2dY7sU4I6Nm2oATgCuBw1K4X7/zWgRskmh4oACg3kTRff4a8D+5VgEbgZ0y5hEyh4nAocAU0b2RAyOqowp8JFztI9O0pPQZBKA4AF1C1aO7gEXA3+TncqC9wb5GiWGdDZwm2cf9nWQVAvagbHI2/c0pRY3a2E1vsQ3wUfgLwLeEi0NGsyhclnYVUvTxFwXIUHo4NKb+xAGNzLkKrENE+a0CwBL+KeACUSc2e6hEjRvMRKoE6Xe9lJ8B/CNlDM1kurcUAMv1a4FLHKFajOENEbgg99urHkixcS+1XQi84nIzQwIAK/a/k6ygehDFABGt2mlEp8aG80OAFE0/BwK/ThlbUwCIBIBxTfKCdEVoN/BV4HbD8d7zUOKVXB/7CeHGAiPls91iy9YHDHWRcE1OUeIGgC8D18s4mpGW3+sFNdMIq8pZA7zfEMFzacEZ0nHAJ0jqkxbLoDsC/XfI/x6Xe+dKfGMJXkhRTUjuflOTJKGLCmoGAEr8ZRKcKNeHVI22WcAtQtRGPJXQPa8CNwJHOyA86ArCDGolOeUmANAUCVDiL5eVtxDxbaR7DHCvI0DJpBnSXL+KS1fY73eKrn+PUW9eGloNCJvJtzqkaQCUjaczKYX4yvVtwE9En1vCVQK5IJvvsUVQvohMC8u0v3ZZKrTSEALhQw7wvAB4PU8AlGB7jM5vSRH9I4EnU3zzch99dSsFHog/S3BmxxQ7EC4nvwK1vQDkmQsqCYddLrq8xXk06oWcIe7oOGplMZFLTUBSdfw08ITYkteBHfK/MZIHmiZgH2sIWTbEVUCLwEvA2SQVIXZsqhI7Zb38fLKvlVJav5mXBCjH3m+4LA6onXMNh5VSJGAx8CVjPxppRwDfFSKH+uw0KuDYgDrSoG6sqM+s7YHSOhcAdLAbSGqNvMFT4n/U6Niy+24VeF4AwkXIIyVd0Wpcy1b5vM1x6r6i8zfWAWGdZFBJGee5OaQslNbr8wBAB3ppQO8rcaYBWx3BLYddIxlNVUFtKSogbUNIi8spHQr8pQ4IzwqAhRQQHsoYBKX1hqwBUI5+NpCfUUkYLdxtJ6TE3w182hCu1UWlxwDfEJuxSPT3c8DDElVfImloC0Sr+fvaQO5HQbg5oIoUgDk9ZE/7CsDGPACoAp8McL9O5kY3cXUldwIfMYS3CxvnAI80OMYdwH3ASYHkHsBVAe9Gfz+1DggLMpQCncemLAFQ7lhqos3YTWK2cStt4FSR1AFGt6t7+mDAvbSxQNnFB/be+ZI7wqwXAPzMEVN/LklxGCIBJ6sIWWm9OctsqHLRFQH/WvXqwykT/06A88+RwEnvK9G7+MMa86lmTArugyljuahOwPhcRiAorbdkJQH63W3GXSw47j/ZDV4n/KgReyX+PMK7S3p7dRhPZ5oBGZIdn5tN5KySuCQgwS111Fd/6NWeFQBKzAV13Ll7XESq6YNjHWE+4NRLVtuDXgHGC1H1WVemOAOnO1ugczgqo/SEfn9rVgDoJC83HGPdzoOMOrEg3O0CtbFS8ZC1363Pe8A9bx9gtWOICvB7B0Bs5pOFGuoCwAbjj/dlEbpsBn+UkwAV3QsCnFaRtEFkfPZrc8y/aJ9zTfIP4PuBxN8bxnh7NXSL3LenQdrU+7wdQSGLCa4yk/KDvpWuW17VOMZGSg4h2eCc15ZYVR1PubWHI6htTrSB4clOCnQuX8hwTHuKkpPe2ctknK0kLsvg/imBVMH0VZKfM4wo65Lfg/J7m/QxT1RCKVDJkEUryPNmSWC1WJ6zQtTKTEP8mOSUgEcMTTQ5uERyOJU+JC+rLhm3vSgPitwN9LLzSIgfm4EqSAeYXItNHSxyEzurCevSCv5cAUCzoIsFADv/qYHvRhLlH97HDKjPhlaKaggyalHg9wlGn1pOXCF/d8g903tTTdbP8c1x4C8P3DPR3WOBaM9qQMWMJxySoLHyjKpBfpsmoqQdJpnLvCUgMsm5kSK1UNtEYZ+9v+N8X7HRqJoOaZduJRt5TnZEYADbJWejg9zPTLbQBABGib3ZJX9vDgDQZhinHqOlPafSyHfSJCDqI/dXAg+M6qwIRbw1e5N9Gru3oBf6aDerTjKqRfq2H7YRG6Btd+B/o0Qytsnf23oh2lksBe5yEjg6QMyOFPVTpXuxWL9swHQJzSsudx87nx66n4plF1rWGWNmT5HaQvfTqPYVtaN2YLUA1ZazHdDnrxHXe4QEVOMdQJohwHh2Ov5WkoNNRpjP4xTaeKYqOLqVi+IO7pvB5P4qy4xFp4reEK9hjNHzLbJw8rIM6lXJ1UxtAgBV4BlHnOkBkF4191SNXj+MpLo6kxb3MqcRCqs1wpxErcbTeg/rhcO9nTjO5GVKZlKVHFWQcqomDVWVHB9Qk8sCqguSfQs2dVEvPdPTtTWm+x6nRmrv7aXLjpPFvbP9FQzHVV30+GETSQP8Nmc7oM9+SdYltPRkErXSRat6n05xJmb0QI+YnnfS770ni33CkUlHzHJE1L4XukFXJRiaQm1r6BMS+scZOwYegOtE72tK+myJCUpm7OsNABX3c04/PMVg25JhOvq2wGoYJOUpWwPp6J+6WGGmSwtnXae0RJ6lnNgiqsano+8KpKM1qNyQ4QLWdg1C+tuh2pGVwk3WM9DE2n2G+KorNwk4tiTw2241K6ujwnaL+rCAfz5lQeZMx0gKxMcyXpLMDAA7qFPdoowCcErKkuSdZrJ6720GhP6u1On3LzArb7F4ZWuM0dR7l5p7PBP9KuP1ih1ZqSA7qDuc+Nry88cIL4R/yhCnYBY+QlXSjXJYpwHxQgOyStpvUsYyL6BGI8kNZb2dK1MA7Er/hBQ1dALda4LKYh+mOw4F+IpEyRYIW9LiyyF99cQL1OqDLPG/5sah33mK7gVlLe47WS6VZgqAndAPHBfVK8wqmxW1KQYEu2J1J133DVR7GPM64GqTYrA1QfOcerJ2aU7A+OrhGyvIri4oNwB0OXE9yUY6WxOkv48SbyQk/iuNoSzStaxwKvA9WXlb7zhxjwR7D5AcjHqA+Z6tEb3MjdMa+x8asHDcf1kO3J8LAHaQ1wekoGCiyfUpILQbPazS0Opc53HAeyWanin9jXb3tBkp2ge4qQ7x/2QCRx9UjRWJyrJEXZ+/Mw8AKkYXzwkYZCXKSUa/lwLifY9bFiyIi9tSJ6YZQa0wQNtcuhYDe+I/LgDFLhnZ4pyBPHbU5wKAJeTzonL8Lnad3Aep1SV5w6wiOl+A7E3k+Q7xrBYGJLNiiP+YSRKGNpCcliPxcwXADvp2o0pC+8OONgauMxAn2AzmtULYmZLDGS+B3BRJEV8qBns14UM5rATcZ9RWIeAyj5eMaJ67JXMFwHL11x0I3j09gOTkwmog05gW9OySsW9NiZrLTrWVTN9XBVa3IpdIW5gz9zcFgEpKsJX2xo7PUjtAw1ZF262opR6CL7tVteS491GTevZq0RZr3UF+FXpNBcDq9A6SIwdssBU6nmCs+PCrAyqt04BSpvsegdAm7SrwH+dZtdR5/g1NIv5eAJpxaJ9VJxcZz6iQYhcUiIuBv0vSqrfPfJOkyPYsQ9y4h2fObyLxq8DOSCRgP/KvybELG1cDPzbcWHb/j93C97vFEzqeZNfMRPF0Rhh7sFmkZinwL5KN3xtMnwW3zmD3A48DfklykHlepZGhtqsZKiikjqok50EcbPRx2kkmabsjRwrjvCPg+9uig2JA11uuP5Ha+dnNfm3LzmYD4L2jNcY4pxFMObVI15O0QqAUST+sKTZRuUbHPyK8UfxtD4Cf8AKSDXy4PEzaMWRpa7Gh+4qO42NJTy+j+SdlDSgAvEoqS/rh5B44ux4oBXevj44/R/qhIEMSgDRCPElyxMC0Oo5BRM+vT9xHAL1OMq2NHFnZVACa6QU10squEq8sXs2TUqWwXNIDG4xrajl8gqQojpJM6WzxoGz/eZfA99oLah8AEhBKI6R5JHuoHbRtvaT7U1RKJSU4GwjXzoF0dLGvYIsdEbU2p5VaKaWVgDHGr693Ft2AannuD8iiRU5l2OSab/q/mEH0LrTB+AKHUAUy9O1dxsMADPU22N8hUx3k467mVQjbDDX0dmgdMV13Kw5mIKJBKAFrYpKNx6HDrQeb6qkOwvE/EUsiLBqkYj1YbYDGOPfGJC+UXEv66/aGW/bpFkiqPBbGkoq4fhiApkptRLIWUdao8SaS/HjW+4aHW9emLwx9QDRPUeOAXcBnSCrRCoMIhMFkt3Qv3Iskb3SKbRxQFG/oPAFD331eHWbaTFSOcv5Kkm1OG1Xl2zfHFUmO9z2d5G11WlBry/mGW+NE18IwXV5dRFIL+xJmM3vsrHORpP5+NvALkmKqoktZDJRcemjSA2VcNg3eTnIu3SkkZTPdVHzoNU/ajiR5q8UzZHe2XBbXPTI+XSOG2qGwA+HaAvyb5Aj9Qwydu70bLaoTKEQGqYhkaW8itVPN09yrKEd1pfn+10jOebNSOYtkI11fznIjw3HvICm3WW0+U++yW///B0FLww0OKb/oAAAAAElFTkSuQmCC" alt="" width="36" height="36" decoding="async"><strong>PixelEraser &mdash; Free image background remover</strong></a>
+  <p>Remove image background instantly with PixelEraser</p>
+  <p>Made with <span class="heart" role="img" aria-label="love">&#9829;&#xFE0E;</span> by <a href="https://www.syedarmarz.bond/" target="_blank" rel="noopener">Syed Armarz</a></p>
+  <p class="copy">&copy; 2026 PixelEraser. All rights reserved.</p>
+</div></footer>
 
-<script>
-  // Change this to your launch date and time.
-  var LAUNCH = new Date("2026-12-01T00:00:00");
+<script type="module">
+const $=(i)=>document.getElementById(i);
+const el=Object.fromEntries(['file','drop','preview','pvwrap','status','progress','download','model','bgcolor','bgmode','bgphoto'].map((i)=>[i,$(i)]));
+const S={get(k,d){try{return localStorage.getItem('rb_'+k)||d}catch{return d}},set(k,v){try{localStorage.setItem('rb_'+k,v)}catch{}}};
+let lib,res=null,resUrl=null,origUrl=null,busy=false,photoUrl=null,bgImg=null,mode='transparent';
+{const v=S.get('model','');if([...el.model.options].some((o)=>o.value===v))el.model.value=v}
+const say=(m,err=false)=>{el.status.textContent=m;el.status.classList.toggle('err',err)};
+const ready=(on)=>{el.download.disabled=!on};
 
-  var el = { d: d, h: h, m: m, s: s };
-  function pad(n) { return String(n).padStart(2, "0"); }
-  function tick() {
-    var diff = Math.max(0, LAUNCH - new Date());
-    var secs = Math.floor(diff / 1000);
-    el.d.textContent = pad(Math.floor(secs / 86400));
-    el.h.textContent = pad(Math.floor(secs % 86400 / 3600));
-    el.m.textContent = pad(Math.floor(secs % 3600 / 60));
-    el.s.textContent = pad(secs % 60);
-  }
-  tick();
-  setInterval(tick, 1000);
-
-  document.getElementById("year").textContent = new Date().getFullYear();
-
-  var form = document.getElementById("notify");
-  var status = document.getElementById("status");
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    var btn = form.querySelector("button");
-    btn.disabled = true;
-    status.className = "status";
-    status.textContent = "Sending…";
-    fetch(form.action, {
-      method: "POST",
-      body: new FormData(form),
-      headers: { Accept: "application/json" }
-    }).then(function (r) {
-      if (!r.ok) throw new Error();
-      form.reset();
-      status.className = "status ok";
-      status.textContent = "Thanks! We’ll email you when we launch.";
-    }).catch(function () {
-      status.className = "status err";
-      status.textContent = "Couldn’t send that. Check your email address and try again.";
-    }).finally(function () { btn.disabled = false; });
-  });
+async function loadLib(){
+  if(lib)return lib;
+  say('Loading the background removal library…');
+  return (lib=await import('https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/+esm'));
+}
+// Very large photos can crash mobile browsers, so shrink them first.
+async function prep(file){
+  const bmp=await createImageBitmap(file),k=Math.min(1,4096/Math.max(bmp.width,bmp.height));
+  if(k===1){bmp.close?.();return file}
+  const c=document.createElement('canvas');c.width=Math.round(bmp.width*k);c.height=Math.round(bmp.height*k);
+  c.getContext('2d').drawImage(bmp,0,0,c.width,c.height);
+  return new Promise((r)=>c.toBlob(r,'image/png'));
+}
+function applyBg(){
+  const on=!!res,m=mode,w=el.pvwrap,photo=m==='photo'&&photoUrl;
+  w.classList.toggle('checker',on&&!photo&&m!=='color');
+  w.style.background=!on?'':m==='color'?el.bgcolor.value:photo?`url("${photoUrl}") center/cover no-repeat`:'';
+}
+function show(){el.preview.src=resUrl;el.preview.alt='Image with background removed';applyBg()}
+async function compose(f){
+  const bmp=await createImageBitmap(res),W=bmp.width,H=bmp.height,c=document.createElement('canvas');c.width=W;c.height=H;
+  const x=c.getContext('2d'),m=mode;
+  if(m==='color'){x.fillStyle=el.bgcolor.value;x.fillRect(0,0,W,H)}
+  else if(m==='photo'&&bgImg&&bgImg.complete&&bgImg.naturalWidth){
+    const k=Math.max(W/bgImg.naturalWidth,H/bgImg.naturalHeight),w=bgImg.naturalWidth*k,h=bgImg.naturalHeight*k;
+    x.drawImage(bgImg,(W-w)/2,(H-h)/2,w,h);
+  }else if(f==='image/jpeg'){x.fillStyle='#ffffff';x.fillRect(0,0,W,H)}
+  x.drawImage(bmp,0,0);bmp.close?.();
+  return new Promise((r)=>c.toBlob(r,f,.95));
+}
+async function handle(file){
+  if(!file)return;
+  if(busy){say('Please wait, the current image is still being processed.');return}
+  if(!/^image\/(png|jpeg|webp)$/.test(file.type)){say('That file type is not supported. Choose a PNG, JPG or WebP image.',true);return}
+  busy=true;ready(false);el.progress.style.transform='scaleX(0)';
+  [origUrl,resUrl].forEach((u)=>u&&URL.revokeObjectURL(u));res=resUrl=null;
+  origUrl=URL.createObjectURL(file);
+  el.preview.src=origUrl;el.drop.classList.add('has');
+  el.preview.alt='Original image';applyBg();el.pvwrap.classList.add('busy');
+  const t0=performance.now();
+  try{
+    const {removeBackground}=await loadLib();
+    const input=await prep(file);
+    say('Preparing the AI model. The first run takes longer.');
+    res=await removeBackground(input,{model:el.model.value,output:{format:'image/png'},progress:(k,c,t)=>{
+      if(t)el.progress.style.transform=`scaleX(${c/t})`;
+      if(k.startsWith('fetch'))say('Downloading the AI model…');else if(k.startsWith('compute'))say('Removing the background…');
+    }});
+    resUrl=URL.createObjectURL(res);
+    const b=await createImageBitmap(res);
+    show();el.progress.style.transform='scaleX(1)';ready(true);
+    say(`Done in ${((performance.now()-t0)/1000).toFixed(1)}s · ${b.width}×${b.height}px`);
+    b.close?.();URL.revokeObjectURL(origUrl);origUrl=null;
+  }catch(e){
+    console.error(e);
+    say('Could not remove the background. Check your internet connection and try another image.'+(location.protocol==='file:'?' Open this page from a website (such as GitHub Pages) instead of from your computer.':''),true);
+  }finally{busy=false;el.pvwrap.classList.remove('busy')}
+}
+const menu=$('bgmenu'),names={transparent:'Transparent',photo:'Photo',color:'Colour'};
+const closeMenu=()=>{menu.hidden=true;el.bgmode.setAttribute('aria-expanded','false')};
+const openMenu=()=>{menu.hidden=false;el.bgmode.setAttribute('aria-expanded','true');menu.querySelector('[aria-selected=true]').focus()};
+function setMode(v){mode=v;el.bgmode.textContent=names[v];menu.querySelectorAll('li').forEach((li)=>li.setAttribute('aria-selected',String(li.dataset.v===v)));applyBg()}
+// Choosing an option (even the one already selected) opens its picker again.
+function pick(v){
+  closeMenu();setMode(v);el.bgmode.focus();
+  if(v==='photo')el.bgphoto.click();
+  else if(v==='color'){try{el.bgcolor.showPicker()}catch{el.bgcolor.click()}}
+}
+el.bgmode.onclick=()=>(menu.hidden?openMenu():closeMenu());
+menu.addEventListener('click',(e)=>{const li=e.target.closest('li');if(li)pick(li.dataset.v)});
+menu.addEventListener('keydown',(e)=>{
+  const items=[...menu.querySelectorAll('li')],i=items.indexOf(document.activeElement);
+  if(e.key==='Escape'){e.preventDefault();closeMenu();el.bgmode.focus()}
+  else if(e.key==='ArrowDown'){e.preventDefault();items[Math.min(i+1,items.length-1)].focus()}
+  else if(e.key==='ArrowUp'){e.preventDefault();items[Math.max(i-1,0)].focus()}
+  else if((e.key==='Enter'||e.key===' ')&&i>=0){e.preventDefault();pick(items[i].dataset.v)}
+  else if(e.key==='Tab')closeMenu();
+});
+addEventListener('click',(e)=>{if(!$('bgSel').contains(e.target))closeMenu()});
+el.bgphoto.addEventListener('cancel',()=>{if(!photoUrl)setMode('transparent')});
+el.bgcolor.addEventListener('input',applyBg);el.bgcolor.addEventListener('change',applyBg);
+el.bgphoto.addEventListener('change',()=>{
+  const f=el.bgphoto.files[0];el.bgphoto.value='';
+  if(!f||!/^image\//.test(f.type))return;
+  if(photoUrl)URL.revokeObjectURL(photoUrl);
+  photoUrl=URL.createObjectURL(f);
+  bgImg=new Image();bgImg.onload=applyBg;bgImg.src=photoUrl;
+});
+el.model.onchange=()=>S.set('model',el.model.value);
+el.download.onclick=async()=>{
+  if(!res)return;const b=await compose('image/png'),a=document.createElement('a');
+  a.href=URL.createObjectURL(b);a.download='PixelEraser-img.png';document.body.append(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href),5000);
+};
+el.file.addEventListener('change',()=>{const f=el.file.files[0];el.file.value='';handle(f)});
+['dragenter','dragover'].forEach((t)=>el.drop.addEventListener(t,(e)=>{e.preventDefault();el.drop.classList.add('over')}));
+['dragleave','drop'].forEach((t)=>el.drop.addEventListener(t,(e)=>{e.preventDefault();el.drop.classList.remove('over')}));
+el.drop.addEventListener('drop',(e)=>{e.stopPropagation();handle(e.dataTransfer.files[0])});
+addEventListener('dragover',(e)=>e.preventDefault());
+addEventListener('drop',(e)=>{e.preventDefault();handle(e.dataTransfer.files[0])});
+addEventListener('paste',(e)=>{const f=[...(e.clipboardData?.files||[])].find((x)=>x.type.startsWith('image/'));if(f)handle(f)});
 </script>
 </body>
 </html>
