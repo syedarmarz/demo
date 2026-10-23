@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coming soon</title>
+<meta name="description" content="We’re putting the finishing touches on something new. Leave your email and we’ll tell you the day it opens.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #14161a;
+    --muted: #666c76;
+    --line: #e7e9ed;
+    --accent: #2b50e6;
+    --accent-ink: #ffffff;
+    --head: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --body: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(1.25rem, 4vw, 2.5rem);
+    max-width: 68rem;
+    margin: 0 auto;
+  }
+  header { display: flex; align-items: center; gap: .6rem; font-family: var(--head); font-weight: 600; font-size: 1.15rem; }
+  .mark { width: 1.1rem; height: 1.1rem; border-radius: 50%; background: var(--accent); }
+
+  main { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 4rem 0; }
+  h1 {
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: clamp(2.6rem, 8vw, 5.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    max-width: 14ch;
+  }
+  .lead { color: var(--muted); max-width: 34rem; margin-top: 1.5rem; }
+
+  .count {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    max-width: 38rem;
+    margin-top: 3.5rem;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .unit { padding: 1.25rem 0 1.1rem 1.25rem; border-left: 1px solid var(--line); }
+  .unit:first-child { border-left: 0; padding-left: 0; }
+  .num {
+    display: block;
+    font-family: var(--head);
+    font-weight: 600;
+    font-size: clamp(2.2rem, 7vw, 3.75rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+  }
+  .label { display: block; margin-top: .5rem; font-size: .9rem; color: var(--muted); }
+
+  .notify { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2.5rem; max-width: 34rem; }
+  .notify input {
+    flex: 1 1 14rem;
+    font: inherit;
+    padding: .85rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--ink);
+  }
+  .notify input::placeholder { color: #9aa0aa; }
+  .notify button {
+    font: inherit;
+    font-weight: 500;
+    padding: .85rem 1.4rem;
+    border: 0;
+    border-radius: 10px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .notify button:hover { background: #2142c4; }
+  .notify button:disabled { opacity: .6; cursor: default; }
+  .status { flex-basis: 100%; min-height: 1.5rem; font-size: .95rem; color: var(--muted); }
+  .status.ok { color: #1a7f4b; }
+  .status.err { color: #b3261e; }
+
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1.5rem; font-size: .9rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 1.25rem; }
+  footer a { color: inherit; text-decoration: none; }
+  footer a:hover { color: var(--ink); text-decoration: underline; }
+  .links { display: flex; gap: 1.25rem; }
+
+  .count { animation: rise .8s ease-out both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .count { animation: none; } }
+  @media (max-width: 480px) { .unit { padding-left: .9rem; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <span class="mark" aria-hidden="true"></span>
+    <span>Your Brand</span>
+  </header>
+
+  <main>
+    <h1>Something new is almost ready.</h1>
+    <p class="lead">We’re putting the finishing touches on it. Leave your email and we’ll tell you the day it opens.</p>
+
+    <div class="count" role="timer" aria-label="Time until launch">
+      <div class="unit"><span class="num" id="d">00</span><span class="label">days</span></div>
+      <div class="unit"><span class="num" id="h">00</span><span class="label">hours</span></div>
+      <div class="unit"><span class="num" id="m">00</span><span class="label">minutes</span></div>
+      <div class="unit"><span class="num" id="s">00</span><span class="label">seconds</span></div>
+    </div>
+
+    <form class="notify" id="notify" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="email" name="email" placeholder="you@example.com" aria-label="Email address" required autocomplete="email">
+      <button type="submit">Notify me</button>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+    </form>
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> Your Brand</span>
+    <span class="links">
+      <a href="mailto:hello@example.com">Contact</a>
+      <a href="#">Twitter</a>
+      <a href="#">Instagram</a>
+    </span>
+  </footer>
+</div>
+
+<script>
+  // Change this to your launch date and time.
+  var LAUNCH = new Date("2026-12-01T00:00:00");
+
+  var el = { d: d, h: h, m: m, s: s };
+  function pad(n) { return String(n).padStart(2, "0"); }
+  function tick() {
+    var diff = Math.max(0, LAUNCH - new Date());
+    var secs = Math.floor(diff / 1000);
+    el.d.textContent = pad(Math.floor(secs / 86400));
+    el.h.textContent = pad(Math.floor(secs % 86400 / 3600));
+    el.m.textContent = pad(Math.floor(secs % 3600 / 60));
+    el.s.textContent = pad(secs % 60);
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  var form = document.getElementById("notify");
+  var status = document.getElementById("status");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var btn = form.querySelector("button");
+    btn.disabled = true;
+    status.className = "status";
+    status.textContent = "Sending…";
+    fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { Accept: "application/json" }
+    }).then(function (r) {
+      if (!r.ok) throw new Error();
+      form.reset();
+      status.className = "status ok";
+      status.textContent = "Thanks! We’ll email you when we launch.";
+    }).catch(function () {
+      status.className = "status err";
+      status.textContent = "Couldn’t send that. Check your email address and try again.";
+    }).finally(function () { btn.disabled = false; });
+  });
+</script>
+</body>
+</html>
